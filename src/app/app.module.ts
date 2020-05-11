@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +14,7 @@ import { PeopleListComponent } from './components/people-list/people-list.compon
 import { SomeoneProfileComponent } from './components/someone-profile/someone-profile.component';
 import { PostComponent } from './components/post/post.component';
 import { CommentPageComponent } from './components/comment-page/comment-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -38,7 +38,9 @@ import { CommentPageComponent } from './components/comment-page/comment-page.com
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

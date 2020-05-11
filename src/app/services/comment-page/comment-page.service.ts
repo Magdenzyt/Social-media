@@ -27,6 +27,6 @@ export class CommentPageService {
     return this.http.get(this.endpointComments).pipe(
       map(this.extractData));
   }
-
+  
   
 }
