@@ -16,6 +16,8 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'profile', component:ProfileComponent },
       { path: 'list', component:PeopleListComponent },
+      { path: 'followers', component:PeopleListComponent },
+      { path: 'followed', component:PeopleListComponent },
       { path: 'someone', component: SomeoneProfileComponent},
       { path: 'comments', component: CommentPageComponent },
      ],

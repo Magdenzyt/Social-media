@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CommentPageService } from '../../services/comment-page/comment-page.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-comment-page',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentPageComponent implements OnInit {
 
-  constructor() { }
+  comments:any=[];
+
+  constructor(public rest:CommentPageService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.getComments();
   }
 
+  getComments() {
+    this.comments = [];
+    this.rest.getComments().subscribe((data: {}) => {
+      console.log("comments"+ data);
+      this.comments = data;
+    });
+  }
 }
