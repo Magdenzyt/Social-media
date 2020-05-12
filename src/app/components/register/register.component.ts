@@ -28,25 +28,23 @@ export class RegisterComponent implements OnInit {
     var formData: any = new FormData();
 
     if(this.registerForm.valid){
-      console.log("VALID")
+      formData.append("username", this.registerForm.get("username").value);
+      formData.append("email", this.registerForm.get("email").value);
+      formData.append("password", this.registerForm.get("password").value);
+
+      this.rest.register(formData).subscribe(
+        (response) => {
+          console.log(response);
+          this.router.navigate(["/login"]);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     }
     else{
       console.log("NOT VALID")
     }
-
-    formData.append("username", this.registerForm.get("username").value);
-    formData.append("email", this.registerForm.get("email").value);
-    formData.append("password", this.registerForm.get("password").value);
-
-    // this.rest.register(formData).subscribe(
-    //   (response) => {
-    //     console.log(response);
-    //     this.router.navigate(["/login"]);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
   }
 
 }
