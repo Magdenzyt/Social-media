@@ -18,28 +18,35 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   
     this.registerForm = this.formBuilder.group({
-      username: [''],
-      email: [''],
-      password: ['']
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     });
   }
 
   onSubmit(){
     var formData: any = new FormData();
 
+    if(this.registerForm.valid){
+      console.log("VALID")
+    }
+    else{
+      console.log("NOT VALID")
+    }
+
     formData.append("username", this.registerForm.get("username").value);
     formData.append("email", this.registerForm.get("email").value);
     formData.append("password", this.registerForm.get("password").value);
 
-    this.rest.register(formData).subscribe(
-      (response) => {
-        console.log(response);
-        this.router.navigate(["/login"]);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    // this.rest.register(formData).subscribe(
+    //   (response) => {
+    //     console.log(response);
+    //     this.router.navigate(["/login"]);
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
   }
 
 }
