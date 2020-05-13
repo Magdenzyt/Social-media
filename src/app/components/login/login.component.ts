@@ -29,10 +29,13 @@ export class LoginComponent implements OnInit {
       formData.append("username", this.loginForm.get('username').value);
       formData.append("password", this.loginForm.get('password').value);
 
+      localStorage.setItem("username", this.loginForm.get('username').value);
+
       this.rest.login(formData).subscribe(
         (response) => {
           localStorage.setItem("token", response["token"]);
           console.log(localStorage["token"]);
+          console.log(localStorage["username"]);
           this.router.navigate(["/home"]);
         },
         (error) => {
