@@ -15,16 +15,17 @@ export class SomeoneProfileService {
 
   constructor(private http: HttpClient) { }
 
-  endpointSomeonePosts = 'http://127.0.0.1:8000/posts';
+  endpointSomeonePosts = 'http://127.0.0.1:8000/posts/user/?username='+ '';
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type':  'application/json',
+      'Authorization': 'Token ' + localStorage["token"]
     })
   };
 
   getSomeonePosts(): Observable<any> {
-    return this.http.get(this.endpointSomeonePosts).pipe(
+    return this.http.get(this.endpointSomeonePosts, this.httpOptions).pipe(
       map(this.extractData));
   }
 

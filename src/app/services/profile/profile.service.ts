@@ -15,15 +15,12 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-  endpointMyPosts = 'http://127.0.0.1:8000/posts/user?username='+ localStorage['username'];
+  endpointMyPosts = 'http://127.0.0.1:8000/posts/user/?username='+ localStorage['username'];
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Expose-Headers': 'Content-Length, X-JSON',
-      'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': '*'
+      'Authorization': 'Token ' + localStorage["token"]
     })
   };
 
@@ -32,4 +29,7 @@ export class ProfileService {
       map(this.extractData));
   }
 
+  makePost(formData){
+    return this.http.post('http://127.0.0.1:8000/posts/', formData);
+  }
 }
