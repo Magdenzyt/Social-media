@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, ReactiveFormsModule } 
 export class ProfileComponent implements OnInit {
 
   postForm: FormGroup;
+  fileToUpload: File = null;
 
   myPosts:any=[];
 
@@ -18,7 +19,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getMyPosts();
-    this.postForm = new FormGroup({
+    this.postForm = this.formBuilder.group({
       message: new FormControl(null, Validators.required),
       customFile: new FormControl(null, Validators.required)
     });
@@ -32,18 +33,21 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  processFile(imageInput: FileList){
+    this.fileToUpload = imageInput.item(0);
+  }
+
   onSubmit(){
     var postData: any = new FormData();
 
-    if(this.postForm.valid){
-      postData.append("message", this.postForm.get('message').value);
-      postData.append("customFile", this.postForm.get('customFile').value);
-
-      console.log(postData);
+    if(this.postForm.valid && this.fileToUpload != null){
+      postData.append("description", this.postForm.get('message').value);
+      postData.append("image", this.fileToUpload, this.fileToUpload.name);
 
       this.rest.makePost(postData).subscribe(
         (response) => {
-          this.router.navigate(["/profile"]);
+          console.log(response);
+          // this.router.navigate(["/profile"]);
         },
         (error) => {
           console.log(error);

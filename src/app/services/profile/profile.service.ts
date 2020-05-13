@@ -19,7 +19,6 @@ export class ProfileService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
       'Authorization': 'Token ' + localStorage["token"]
     })
   };
@@ -30,6 +29,6 @@ export class ProfileService {
   }
 
   makePost(formData){
-    return this.http.post('http://127.0.0.1:8000/posts/', formData);
+    return this.http.post('http://127.0.0.1:8000/posts/', formData, this.httpOptions);
   }
 }

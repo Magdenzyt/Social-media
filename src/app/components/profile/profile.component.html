@@ -58,14 +58,14 @@
                                 <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                                     <div class="form-group">
                                         <label class="sr-only" for="message">post</label>
-                                        <textarea class="form-control" name="message" id="message" rows="3" placeholder="Write something..."></textarea>
+                                        <textarea class="form-control" formControlName="message" id="message" rows="3" placeholder="Write something..."></textarea>
                                     </div>
 
                                 </div>
                                 <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
                                     <div class="form-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="customFile" id="customFile">
+                                            <input #imageInput type="file" accept="image/*" class="custom-file-input" formControlName="customFile" id="customFile" (change)="processFile($event.target.files)">
                                             <label class="custom-file-label" for="customFile">Upload image</label>
                                         </div>
                                     </div>
