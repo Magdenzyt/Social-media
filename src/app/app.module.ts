@@ -14,6 +14,8 @@ import { PeopleListComponent } from './components/people-list/people-list.compon
 import { SomeoneProfileComponent } from './components/someone-profile/someone-profile.component';
 import { CommentPageComponent } from './components/comment-page/comment-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditComponent } from './components/edit/edit.component';
+import { EditPageComponent } from './components/edit-page/edit-page.component';
 
 
 
@@ -31,6 +33,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PeopleListComponent,
     SomeoneProfileComponent,
     CommentPageComponent,
+    EditComponent,
+    EditPageComponent,
   ],
   imports: [
     BrowserModule,

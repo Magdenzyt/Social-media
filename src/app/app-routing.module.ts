@@ -8,12 +8,14 @@ import { RegisterComponent} from './components/register/register.component';
 import { PeopleListComponent} from './components/people-list/people-list.component';
 import { SomeoneProfileComponent} from './components/someone-profile/someone-profile.component';
 import { CommentPageComponent} from './components/comment-page/comment-page.component';
+import { EditPageComponent} from './components/edit-page/edit-page.component';
 
 const routes: Routes = [
   { 
     path: '', 
     children: [
       { path: 'home', component: HomeComponent },
+      { path: 'edit', component: EditPageComponent },
       { path: 'profile', component:ProfileComponent },
       { path: 'list', component:PeopleListComponent },
       { path: 'followers', component:PeopleListComponent },
