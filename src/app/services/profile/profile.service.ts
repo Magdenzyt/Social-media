@@ -15,7 +15,7 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-  endpointMyPosts = 'http://127.0.0.1:8000/posts';
+  endpointMyPosts = 'http://127.0.0.1:8000/posts/';
 
   httpOptions = {
     headers: new HttpHeaders({

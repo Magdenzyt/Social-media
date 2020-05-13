@@ -11,9 +11,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(formData){
-    this.http.post('http://127.0.0.1:8000/api-auth', formData).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error));
+    return this.http.post('http://127.0.0.1:8000/api-auth/', formData);
   }
 
   logout() {

@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { first } from 'rxjs/operators';
 import { LoginService } from '../../services/login/login.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,17 +15,35 @@ export class LoginComponent implements OnInit {
 
   constructor(public rest:LoginService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router ) {}
 
-  ngOnInit() {
+  ngOnInit() : void {
     this.loginForm = this.formBuilder.group({
-      username: [''],
-      password: [''],
+      username: ['',[Validators.required, Validators.minLength(3)]],
+      password: ['',[Validators.required]],
     });
   }
 
   onSubmit(){
     var formData: any = new FormData();
-    formData.append("name", this.loginForm.get('username').value);
-    formData.append("avatar", this.loginForm.get('password').value);
+
+    if(this.loginForm.valid){
+      formData.append("username", this.loginForm.get('username').value);
+      formData.append("password", this.loginForm.get('password').value);
+
+      this.rest.login(formData).subscribe(
+        (response) => {
+          localStorage.setItem("token", response["token"]);
+          console.log(localStorage["token"]);
+          this.router.navigate(["/home"]);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+    else{
+      console.log("NOT VALID")
+    }
+    
 
     this.rest.login(formData);
   }

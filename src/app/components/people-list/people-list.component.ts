@@ -20,6 +20,8 @@ export class PeopleListComponent implements OnInit {
       this.getFollowers();
     } else if (this.router.url.endsWith('/followed')){
       this.getFollowed();
+    } else if (this.router.url.endsWith('/likes')){
+    this.getFollowed();
     }
   }
 
@@ -43,6 +45,14 @@ export class PeopleListComponent implements OnInit {
     this.users = [];
     this.rest.getUsers().subscribe((data: {}) => {
       console.log("followed"+ data);
+      this.users = data;
+    });
+  }
+
+  getLikes() {
+    this.users = [];
+    this.rest.getUsers().subscribe((data: {}) => {
+      console.log("likes"+ data);
       this.users = data;
     });
   }

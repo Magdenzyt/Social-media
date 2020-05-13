@@ -18,6 +18,7 @@ export class PeopleListService {
   endpointUsers = 'http://127.0.0.1:8000/users/';
   endpointFollowers = 'http://127.0.0.1:8000/followers/';
   endpointFollowed = 'http://127.0.0.1:8000/followed/';
+  endpointLikes = 'http://127.0.0.1:8000/likes/';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
@@ -36,6 +37,11 @@ export class PeopleListService {
 
   getFollowed(): Observable<any> {
     return this.http.get(this.endpointFollowed).pipe(
+      map(this.extractData));
+  }
+
+  getLikes(): Observable<any> {
+    return this.http.get(this.endpointLikes).pipe(
       map(this.extractData));
   }
 }

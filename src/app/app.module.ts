@@ -12,7 +12,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { PeopleListComponent } from './components/people-list/people-list.component';
 import { SomeoneProfileComponent } from './components/someone-profile/someone-profile.component';
-import { PostComponent } from './components/post/post.component';
 import { CommentPageComponent } from './components/comment-page/comment-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -31,7 +30,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LayoutComponent,
     PeopleListComponent,
     SomeoneProfileComponent,
-    PostComponent,
     CommentPageComponent,
   ],
   imports: [
