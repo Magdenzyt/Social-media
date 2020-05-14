@@ -13,6 +13,8 @@ export class ProfileService {
     return body || { };
   }
 
+  
+
   constructor(private http: HttpClient) { }
 
   endpointMyPosts = 'http://127.0.0.1:8000/posts/user/?username='+ localStorage['username'];

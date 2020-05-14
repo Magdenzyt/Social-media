@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   fileToUpload: File = null;
 
   myPosts:any=[];
+  myName = localStorage["username"];
 
   constructor(public rest:ProfileService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) { }
 
