@@ -2,69 +2,19 @@
 
 <div class="container-fluid gedf-wrapper">
     <div class="row justify-content-center">
-        
         <div class="col-md-5 gedf-main center">
-                <br>
-                <br>
-                <div class="media user-follower">
-                    <img class="rounded-circle pull-left" width="100" src="/assets/profile11.jpg" alt="">
-                    <div class="media-body" style="padding-left: 10px; padding-top: 30px;">
-                        <a href="#" class="text-info">@Peter</a>
-                        <div class="text-muted h7 mb-2 pull-right"> Following</div>
-                    </div>
+            <div *ngFor="let user of users" class="media user-follower">
+                <img class="rounded-circle pull-left" width="100" src="{{user.avatar}}" alt="">
+                <div class="media-body" style="padding-left: 10px; padding-top: 30px;">
+                    <a href="#" class="text-info">{{user.username}}</a>
+                    <button *ngIf="!user.followed" (click)="follow(user.id)" class="btn btn-outline-info my-2 my-sm-0 pull-right" >
+                        Follow
+                    </button>
+                    <button *ngIf="user.followed" (click)="unfollow(user.id)" class="btn btn-outline-info my-2 my-sm-0 pull-right" >
+                        UnFollow
+                    </button>
                 </div>
-                <br>
-                <br>
-                <div class="media user-follower">
-                    <img class="rounded-circle pull-left" width="100" src="/assets/photo22.jpg" alt="">
-                    <div class="media-body" style="padding-left: 10px; padding-top: 30px;">
-                        <a href="#" class="text-info">@Melanie</a>
-                        <div class="text-muted h7 mb-2 pull-right"> Following</div>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-               
-                
-                <!---div class="media user-follower">
-                    <img class="rounded-circle pull-left" width="100" src="/assets/profile3.jpg" alt="">
-                    <div class="media-body" style="padding-left: 10px; padding-top: 30px;">
-                        <a href="#" class="text-info">Lais Ribeiro<i class="text-muted username"> @LR</i></a>
-                        <div class="text-muted h7 mb-2 pull-right"> Following</div>
-                    </div>
-                </div>
-                    
-                    <br>
-                    <br>
-                    <div class="media user-follower">
-                        <img class="rounded-circle pull-left" width="100" src="/assets/profile4.jpg" alt="">
-                        <div class="media-body" style="padding-left: 10px; padding-top: 30px;">
-                            <a href="#" class="text-info">Alexina Graham<i class="text-muted username"> @Alex</i></a>
-                            <button type="button" class="btn btn-outline-info pull-right">Follow</button>
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                    <div class="media user-follower">
-                        <img class="rounded-circle pull-left" width="100" src="/assets/profile5.jpg" alt="">
-                        <div class="media-body" style="padding-left: 10px; padding-top: 30px;">
-                            <a href="#" class="text-info">Joan Smalls<i class="text-muted username"> @Jo</i></a>
-                            <button type="button" class="btn btn-outline-info pull-right">Follow</button>
-                        </div>
-                    </div--->
-
-
-
-               
+            </div>
         </div>
     </div>
 </div>

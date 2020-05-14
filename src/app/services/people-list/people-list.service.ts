@@ -19,29 +19,38 @@ export class PeopleListService {
   endpointFollowers = 'http://127.0.0.1:8000/followers/';
   endpointFollowed = 'http://127.0.0.1:8000/followed/';
   endpointLikes = 'http://127.0.0.1:8000/likes/';
+  endpointFollow = 'http://127.0.0.1:8000/followed/';
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type':  'application/json',
+      "Authorization": 'Token ' + localStorage['token']
     })
   };
 
+  follow(id): Observable<any>{
+    var formData = {
+      "followed": id
+    }
+    return this.http.post(this.endpointFollow, formData, this.httpOptions);
+  }
+
   getUsers(): Observable<any> {
-    return this.http.get(this.endpointUsers).pipe(
+    return this.http.get(this.endpointUsers, this.httpOptions).pipe(
       map(this.extractData));
   }
 
   getFollowers(): Observable<any> {
-    return this.http.get(this.endpointFollowers).pipe(
+    return this.http.get(this.endpointFollowers, this.httpOptions).pipe(
       map(this.extractData));
   }
 
   getFollowed(): Observable<any> {
-    return this.http.get(this.endpointFollowed).pipe(
+    return this.http.get(this.endpointFollowed, this.httpOptions).pipe(
       map(this.extractData));
   }
 
   getLikes(): Observable<any> {
-    return this.http.get(this.endpointLikes).pipe(
+    return this.http.get(this.endpointLikes, this.httpOptions).pipe(
       map(this.extractData));
   }
 }
